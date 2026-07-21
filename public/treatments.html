@@ -109,7 +109,6 @@
                 <a href="about.html" class="hover:text-gold transition">About</a>
                 <a href="treatments.html" class="text-gold transition">Treatments</a>
                 <a href="index.html#faq" class="hover:text-gold transition">FAQ</a>
-                <a href="index.html#faq" class="hover:text-gold transition">FAQ</a>
             </div>
 
             <a href="appointment.html" class="hidden md:inline-block bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
@@ -140,7 +139,7 @@
                 Comprehensive Dental Care for <span class="text-gold italic">Every Smile</span>
             </h1>
             <p class="reveal reveal-delay-2 text-lg text-gray-300 max-w-2xl mx-auto font-light mb-8">
-                From preventive procedures to full cosmetic restorations, we offer gentle, precise treatments utilizing state-of-the-art international technology.
+                From basic checkups to specialized pain management, we offer complete, personalized treatments in a luxurious setting.
             </p>
             <a href="appointment.html" class="reveal reveal-delay-3 inline-block bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-navy transition shadow-lg hover:-translate-y-1">
                 Book Your Consultation
@@ -152,51 +151,30 @@
     <section class="py-24 bg-light">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             
-            <!-- Category Filter Buttons -->
+            <!-- Category Filter Buttons - Updated with new logical categories -->
             <div class="reveal flex flex-wrap justify-center gap-3 mb-16">
                 <button class="filter-btn active px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="all">All Treatments</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="cosmetic">Cosmetic</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="restorative">Restorative</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="preventive">Preventive & Checkup</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="restorative">Restorative & Fillings</button>
                 <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="ortho">Orthodontics</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="preventive">Preventive</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="specialized">Specialized & Pain</button>
             </div>
 
-            <!-- Treatments Grid -->
+            <!-- Treatments Grid - All 11 treatments updated -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="treatments-grid">
                 
-                <!-- Treatment 1: Dental Implants -->
-                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
+                <!-- Treatment 1: Dental Checkup -->
+                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="preventive">
                     <div class="h-64 img-zoom-container relative">
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dea?w=600&auto=format&fit=crop" alt="Dental Implants" class="w-full h-full object-cover">
-                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" alt="Dental Checkup" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Preventive</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Dental Implants</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Permanent, titanium-supported tooth replacements that restore 100% natural biting function and aesthetics.</p>
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Dental Checkup</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Comprehensive examination, digital X-rays, and personalized consultation to maintain a healthy foundation.</p>
                         
                         <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 1-2 Hours (per implant)</div>
-                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 3-5 Days</div>
-                        </div>
-
-                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
-                            Book Appointment
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Treatment 2: Smile Makeover -->
-                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="cosmetic">
-                    <div class="h-64 img-zoom-container relative">
-                        <img src="https://images.unsplash.com/photo-1598256989800-fea5f6109968?w=600&auto=format&fit=crop" alt="Smile Makeover" class="w-full h-full object-cover">
-                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cosmetic</span>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Smile Makeover</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">A customized combination of digital smile design, veneers, and laser contouring for a striking aesthetic update.</p>
-                        
-                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 2-3 Visits</div>
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 30-45 Mins</div>
                             <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
                         </div>
 
@@ -206,19 +184,19 @@
                     </div>
                 </div>
 
-                <!-- Treatment 3: Invisible Aligners -->
-                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="ortho">
+                <!-- Treatment 2: Scaling & Polishing -->
+                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="preventive">
                     <div class="h-64 img-zoom-container relative">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&auto=format&fit=crop" alt="Invisible Aligners" class="w-full h-full object-cover">
-                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Orthodontics</span>
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=600&auto=format&fit=crop" alt="Scaling" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Preventive</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Invisible Aligners</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Discreet, custom clear trays that align your teeth comfortably without wires, brackets, or dietary restrictions.</p>
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Scaling & Polishing</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Professional cleaning to remove plaque and tartar buildup, followed by polishing for a brighter smile.</p>
                         
                         <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 6-18 Months</div>
-                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; No Downtime</div>
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 45-60 Mins</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
                         </div>
 
                         <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
@@ -227,15 +205,57 @@
                     </div>
                 </div>
 
-                <!-- Treatment 4: Porcelain Veneers -->
-                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="cosmetic">
+                <!-- Treatment 3: Teeth Fillings -->
+                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
                     <div class="h-64 img-zoom-container relative">
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&auto=format&fit=crop" alt="Porcelain Veneers" class="w-full h-full object-cover">
-                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cosmetic</span>
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=600&auto=format&fit=crop" alt="Fillings" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Porcelain Veneers</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Ultra-thin ceramic shells handcrafted to correct gaps, chips, stains, and minor tooth misalignment permanently.</p>
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Teeth Fillings</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Mercury-free, tooth-colored composite restorations to repair decay and damage seamlessly and invisibly.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 30-60 Mins</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 4: Root Canal Treatment -->
+                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop" alt="Root Canal" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Root Canal Treatment</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Advanced endodontics with a rotary technique to save severely damaged or infected teeth with minimal discomfort.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 1-2 Visits</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 24-48 Hours</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 5: Crowns & Bridges -->
+                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=600&auto=format&fit=crop" alt="Crowns" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Crowns & Bridges</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Custom-designed porcelain or ceramic caps and bridges to restore strength, function, and aesthetics to damaged or missing teeth.</p>
                         
                         <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
                             <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 2 Visits</div>
@@ -248,19 +268,19 @@
                     </div>
                 </div>
 
-                <!-- Treatment 5: Painless Root Canal -->
-                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
+                <!-- Treatment 6: Braces & Aligners -->
+                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="ortho">
                     <div class="h-64 img-zoom-container relative">
-                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&auto=format&fit=crop" alt="Root Canal" class="w-full h-full object-cover">
-                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&auto=format&fit=crop" alt="Braces" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Orthodontics</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Painless Root Canal</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Advanced endodontics with rotary equipment and local anesthesia that saves natural teeth with complete comfort.</p>
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Braces & Aligners</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Straighten misaligned teeth using traditional braces or invisible clear aligners for a healthy, confident smile.</p>
                         
                         <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 45-60 Mins</div>
-                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 24 Hours</div>
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 6-24 Months</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; No Downtime</div>
                         </div>
 
                         <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
@@ -269,18 +289,102 @@
                     </div>
                 </div>
 
-                <!-- Treatment 6: Laser Teeth Whitening -->
-                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="cosmetic preventive">
+                <!-- Treatment 7: Implants -->
+                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
                     <div class="h-64 img-zoom-container relative">
-                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&auto=format&fit=crop" alt="Teeth Whitening" class="w-full h-full object-cover">
-                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cosmetic</span>
+                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dea?w=600&auto=format&fit=crop" alt="Dental Implants" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Laser Teeth Whitening</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Safely illuminate your smile up to 8 shades whiter in a single hour using non-sensitive laser acceleration.</p>
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Implants</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">State-of-the-art titanium roots surgically placed to support permanent replacement teeth, restoring natural biting force.</p>
                         
                         <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 60 Minutes</div>
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 1 Hour (Placement)</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 3-5 Days</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 8: Kids Dentistry -->
+                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="preventive">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fea5f6109968?w=600&auto=format&fit=crop" alt="Kids Dentistry" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Preventive</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Kids Dentistry</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Specialized, gentle dental care and preventive treatments for children in a warm, comforting environment.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; Varies</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 9: Any Facial & Jaw pain management -->
+                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="specialized">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1579165466549-7121287900b7?q=80&w=600&auto=format&fit=crop" alt="Jaw Pain" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Specialized</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Facial & Jaw Pain</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Expert diagnostic and therapeutic management of TMJ disorders, chronic teeth grinding, and facial pain.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; Varies</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Progressive</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 10: Mouth/Oral ulcers -->
+                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="specialized">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=80&w=600&auto=format&fit=crop" alt="Oral Ulcers" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Specialized</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Mouth/Oral ulcers</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Accurate diagnosis and therapeutic management for stubborn or painful mouth sores, ensuring swift relief and healing.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; Consultation</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Varies</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 11: Pre Cancer screening and management -->
+                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="preventive">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&auto=format&fit=crop" alt="Cancer Screening" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Preventive</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Pre Cancer Screening</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Proactive oral examinations using advanced techniques for the early detection of pre-cancerous and cancerous conditions.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 30 Minutes</div>
                             <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
                         </div>
 
@@ -354,7 +458,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - No changes needed to structure, links updated to reflect new logical links if needed, but structure is fine -->
     <footer class="bg-[#05111D] pt-20 pb-10 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -382,14 +486,14 @@
                     </ul>
                 </div>
 
-                <!-- Treatments -->
+                <!-- Treatments - Updated footer links to reflect card treatments -->
                 <div>
                     <h4 class="text-white font-playfair font-bold text-lg mb-6">Treatments</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="treatments.html" class="hover:text-gold transition">Dental Implants</a></li>
-                        <li><a href="treatments.html" class="hover:text-gold transition">Invisible Aligners</a></li>
-                        <li><a href="treatments.html" class="hover:text-gold transition">Smile Makeover</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Braces & Aligners</a></li>
                         <li><a href="treatments.html" class="hover:text-gold transition">Root Canal Treatment</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Kids Dentistry</a></li>
                     </ul>
                 </div>
 
@@ -487,7 +591,7 @@
             
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // 3. Treatment Category Filtering Logic
+            // 3. Treatment Category Filtering Logic - No changes needed, still works
             const filterBtns = document.querySelectorAll('.filter-btn');
             const treatmentItems = document.querySelectorAll('.treatment-item');
 
