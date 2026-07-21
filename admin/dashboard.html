@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Krupa's Dental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: { navy: '#0B1F33', gold: '#D4AF37', light: '#F8F9FB' },
+      fontFamily: { playfair: ['"Playfair Display"', 'serif'], inter: ['Inter', 'sans-serif'] } } }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background: #F8F9FB; }
+  .font-playfair { font-family: '"Playfair Display"', serif; }
+  .status-confirmed { background: #E7F6EC; color: #1D8A4A; }
+  .status-cancelled { background: #FCEAEA; color: #C0392B; }
+  .today-row { background: #FFF9E8; }
+</style>
+</head>
+<body class="text-navy">
+
+  <header class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div>
+        <span class="font-playfair font-bold text-xl">Krupa's<span class="text-gold">.</span></span>
+        <span class="text-gray-400 text-sm ml-3">Admin Dashboard</span>
+      </div>
+      <button id="logout-btn" class="text-sm text-gray-300 hover:text-gold transition flex items-center gap-1">
+        <i class="ph ph-sign-out"></i> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div class="bg-white rounded-2xl shadow-sm p-6">
+        <p class="text-gray-400 text-sm">Total Confirmed</p>
+        <p id="stat-total" class="text-3xl font-playfair font-bold text-navy mt-1">–</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm p-6">
+        <p class="text-gray-400 text-sm">Today's Appointments</p>
+        <p id="stat-today" class="text-3xl font-playfair font-bold text-navy mt-1">–</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm p-6">
+        <p class="text-gray-400 text-sm">Upcoming</p>
+        <p id="stat-upcoming" class="text-3xl font-playfair font-bold text-navy mt-1">–</p>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-6 flex flex-wrap items-end gap-4">
+      <div>
+        <label class="text-xs font-medium text-gray-400 block mb-1">Filter by date</label>
+        <input type="date" id="filter-date" class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gold">
+      </div>
+      <div>
+        <label class="text-xs font-medium text-gray-400 block mb-1">Status</label>
+        <select id="filter-status" class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gold">
+          <option value="">All</option>
+          <option value="confirmed" selected>Confirmed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <button id="clear-filters" class="text-sm text-gray-500 hover:text-navy underline">Clear filters</button>
+      <button id="refresh-btn" class="ml-auto bg-gold text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-navy transition-colors flex items-center gap-2">
+        <i class="ph ph-arrows-clockwise"></i> Refresh
+      </button>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-left text-gray-400 border-b border-gray-100">
+            <th class="px-5 py-4 font-medium">Date</th>
+            <th class="px-5 py-4 font-medium">Time</th>
+            <th class="px-5 py-4 font-medium">Patient</th>
+            <th class="px-5 py-4 font-medium">Phone</th>
+            <th class="px-5 py-4 font-medium">Email</th>
+            <th class="px-5 py-4 font-medium">Treatment</th>
+            <th class="px-5 py-4 font-medium">Status</th>
+            <th class="px-5 py-4 font-medium">Action</th>
+          </tr>
+        </thead>
+        <tbody id="appointments-body">
+          <tr><td colspan="8" class="px-5 py-10 text-center text-gray-400">Loading appointments...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    const tbody = document.getElementById('appointments-body');
+    const filterDate = document.getElementById('filter-date');
+    const filterStatus = document.getElementById('filter-status');
+
+    function todayStr() {
+      return new Date().toISOString().split('T')[0];
+    }
+
+    function formatDate(d) {
+      const dt = new Date(d + 'T00:00:00');
+      return dt.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    function formatTime(t) {
+      const [h, m] = t.split(':').map(Number);
+      const period = h >= 12 ? 'PM' : 'AM';
+      const displayHour = h % 12 === 0 ? 12 : h % 12;
+      return `${displayHour}:${String(m).padStart(2, '0')} ${period}`;
+    }
+
+    async function loadAppointments() {
+      const params = new URLSearchParams();
+      if (filterDate.value) params.set('date', filterDate.value);
+      if (filterStatus.value) params.set('status', filterStatus.value);
+
+      const res = await fetch(`/admin/api/appointments?${params.toString()}`);
+      if (res.status === 401) {
+        window.location.href = '/admin/login.html';
+        return;
+      }
+      const data = await res.json();
+      renderTable(data.appointments || []);
+      renderStats(data.appointments || []);
+    }
+
+    function renderStats(rows) {
+      const confirmed = rows.filter(r => r.status === 'confirmed');
+      const today = confirmed.filter(r => r.date === todayStr());
+      const upcoming = confirmed.filter(r => r.date > todayStr());
+      document.getElementById('stat-total').textContent = confirmed.length;
+      document.getElementById('stat-today').textContent = today.length;
+      document.getElementById('stat-upcoming').textContent = upcoming.length;
+    }
+
+    function renderTable(rows) {
+      if (!rows.length) {
+        tbody.innerHTML = `<tr><td colspan="8" class="px-5 py-10 text-center text-gray-400">No appointments found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows.map(r => `
+        <tr class="border-b border-gray-50 ${r.date === todayStr() ? 'today-row' : ''}">
+          <td class="px-5 py-4">${formatDate(r.date)}</td>
+          <td class="px-5 py-4 font-medium">${formatTime(r.time)}</td>
+          <td class="px-5 py-4">${escapeHtml(r.name)}</td>
+          <td class="px-5 py-4">${escapeHtml(r.phone)}</td>
+          <td class="px-5 py-4">${escapeHtml(r.email)}</td>
+          <td class="px-5 py-4">${escapeHtml(r.treatment || '—')}</td>
+          <td class="px-5 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium status-${r.status}">${r.status}</span></td>
+          <td class="px-5 py-4">
+            ${r.status === 'confirmed'
+              ? `<button data-id="${r.id}" class="cancel-btn text-red-500 hover:underline text-xs font-medium">Cancel</button>`
+              : `<span class="text-gray-300 text-xs">—</span>`}
+          </td>
+        </tr>
+      `).join('');
+
+      document.querySelectorAll('.cancel-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!confirm('Cancel this appointment? This will free up the time slot.')) return;
+          const id = btn.dataset.id;
+          const res = await fetch(`/admin/api/appointments/${id}/cancel`, { method: 'POST' });
+          if (res.ok) loadAppointments();
+          else alert('Could not cancel this appointment.');
+        });
+      });
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str ?? '';
+      return div.innerHTML;
+    }
+
+    document.getElementById('refresh-btn').addEventListener('click', loadAppointments);
+    document.getElementById('filter-date').addEventListener('change', loadAppointments);
+    document.getElementById('filter-status').addEventListener('change', loadAppointments);
+    document.getElementById('clear-filters').addEventListener('click', () => {
+      filterDate.value = '';
+      filterStatus.value = '';
+      loadAppointments();
+    });
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await fetch('/admin/logout', { method: 'POST' });
+      window.location.href = '/admin/login.html';
+    });
+
+    loadAppointments();
+    setInterval(loadAppointments, 30000); // auto-refresh every 30s
+  </script>
+</body>
+</html>

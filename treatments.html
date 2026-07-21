@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Treatments | Krupa's Dental</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0B1F33',
+                        gold: '#D4AF37',
+                        gold_hover: '#b5952f',
+                        light: '#F8F9FB',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-playfair {
+            font-family: '"Playfair Display"', serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-dark {
+            background: rgba(11, 31, 51, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 100ms; }
+        .reveal-delay-2 { transition-delay: 200ms; }
+        .reveal-delay-3 { transition-delay: 300ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8F9FB; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+
+        /* Filter Button Styling */
+        .filter-btn.active {
+            background-color: #0B1F33;
+            color: #FFFFFF;
+            border-color: #0B1F33;
+        }
+
+        /* Hover Zoom Effect */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 0.7s ease; }
+        .img-zoom-container:hover img { transform: scale(1.08); }
+    </style>
+</head>
+<body class="bg-light antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair font-bold text-white transition-colors duration-300" id="nav-logo">
+                Krupa's<span class="text-gold">.</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-white transition-colors duration-300" id="nav-links">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="about.html" class="hover:text-gold transition">About</a>
+                <a href="treatments.html" class="text-gold transition">Treatments</a>
+                <a href="index.html#faq" class="hover:text-gold transition">FAQ</a>
+                <a href="index.html#faq" class="hover:text-gold transition">FAQ</a>
+            </div>
+
+            <a href="appointment.html" class="hidden md:inline-block bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
+                Book Appointment
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-2xl" id="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden bg-navy">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" alt="Dental Care" class="w-full h-full object-cover opacity-20" />
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/80 to-navy"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 mt-16 max-w-4xl mx-auto">
+            <div class="reveal flex items-center justify-center space-x-2 text-gold/80 text-sm font-medium mb-6 uppercase tracking-widest">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <span>/</span>
+                <span class="text-white">Treatments</span>
+            </div>
+            <h1 class="reveal reveal-delay-1 text-4xl md:text-6xl font-playfair font-bold text-white leading-tight mb-6">
+                Comprehensive Dental Care for <span class="text-gold italic">Every Smile</span>
+            </h1>
+            <p class="reveal reveal-delay-2 text-lg text-gray-300 max-w-2xl mx-auto font-light mb-8">
+                From preventive procedures to full cosmetic restorations, we offer gentle, precise treatments utilizing state-of-the-art international technology.
+            </p>
+            <a href="appointment.html" class="reveal reveal-delay-3 inline-block bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-navy transition shadow-lg hover:-translate-y-1">
+                Book Your Consultation
+            </a>
+        </div>
+    </header>
+
+    <!-- Filter Tabs & Treatment Grid -->
+    <section class="py-24 bg-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            <!-- Category Filter Buttons -->
+            <div class="reveal flex flex-wrap justify-center gap-3 mb-16">
+                <button class="filter-btn active px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="all">All Treatments</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="cosmetic">Cosmetic</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="restorative">Restorative</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="ortho">Orthodontics</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-600 hover:border-navy transition" data-filter="preventive">Preventive</button>
+            </div>
+
+            <!-- Treatments Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="treatments-grid">
+                
+                <!-- Treatment 1: Dental Implants -->
+                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dea?w=600&auto=format&fit=crop" alt="Dental Implants" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Dental Implants</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Permanent, titanium-supported tooth replacements that restore 100% natural biting function and aesthetics.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 1-2 Hours (per implant)</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 3-5 Days</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 2: Smile Makeover -->
+                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="cosmetic">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fea5f6109968?w=600&auto=format&fit=crop" alt="Smile Makeover" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cosmetic</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Smile Makeover</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">A customized combination of digital smile design, veneers, and laser contouring for a striking aesthetic update.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 2-3 Visits</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 3: Invisible Aligners -->
+                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="ortho">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&auto=format&fit=crop" alt="Invisible Aligners" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Orthodontics</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Invisible Aligners</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Discreet, custom clear trays that align your teeth comfortably without wires, brackets, or dietary restrictions.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 6-18 Months</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; No Downtime</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 4: Porcelain Veneers -->
+                <div class="treatment-item reveal group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="cosmetic">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&auto=format&fit=crop" alt="Porcelain Veneers" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cosmetic</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Porcelain Veneers</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Ultra-thin ceramic shells handcrafted to correct gaps, chips, stains, and minor tooth misalignment permanently.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 2 Visits</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 1-2 Days</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 5: Painless Root Canal -->
+                <div class="treatment-item reveal reveal-delay-1 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="restorative">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&auto=format&fit=crop" alt="Root Canal" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Restorative</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Painless Root Canal</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Advanced endodontics with rotary equipment and local anesthesia that saves natural teeth with complete comfort.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 45-60 Mins</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; 24 Hours</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 6: Laser Teeth Whitening -->
+                <div class="treatment-item reveal reveal-delay-2 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-category="cosmetic preventive">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&auto=format&fit=crop" alt="Teeth Whitening" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-navy/90 text-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cosmetic</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-playfair font-bold text-navy mb-3 group-hover:text-gold transition-colors">Laser Teeth Whitening</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Safely illuminate your smile up to 8 shades whiter in a single hour using non-sensitive laser acceleration.</p>
+                        
+                        <div class="space-y-2 mb-8 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                            <div class="flex items-center"><i class="ph ph-clock text-gold mr-2 text-lg"></i> <strong>Duration:</strong>&nbsp; 60 Minutes</div>
+                            <div class="flex items-center"><i class="ph ph-heartbeat text-gold mr-2 text-lg"></i> <strong>Recovery:</strong>&nbsp; Immediate</div>
+                        </div>
+
+                        <a href="appointment.html" class="block w-full bg-navy text-white text-center py-3 rounded-full text-sm font-medium hover:bg-gold transition-colors">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Process -->
+    <section class="py-24 bg-navy relative overflow-hidden text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+                <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Our Standard</h2>
+                <h3 class="text-4xl font-playfair font-bold">The Care Experience</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="reveal text-center p-6 bg-[#05111D] rounded-3xl border border-white/10">
+                    <div class="w-16 h-16 mx-auto bg-navy border border-gold/40 rounded-2xl flex items-center justify-center text-gold text-3xl mb-6">
+                        <i class="ph ph-chat-teardrop-dots"></i>
+                    </div>
+                    <h4 class="font-playfair font-bold text-xl mb-2">1. Consultation</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Understanding your concerns, desires, and medical history in a relaxed setting.</p>
+                </div>
+
+                <div class="reveal reveal-delay-1 text-center p-6 bg-[#05111D] rounded-3xl border border-white/10">
+                    <div class="w-16 h-16 mx-auto bg-navy border border-gold/40 rounded-2xl flex items-center justify-center text-gold text-3xl mb-6">
+                        <i class="ph ph-scan"></i>
+                    </div>
+                    <h4 class="font-playfair font-bold text-xl mb-2">2. 3D Diagnosis</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">High-definition digital scans for precision planning without messy impressions.</p>
+                </div>
+
+                <div class="reveal reveal-delay-2 text-center p-6 bg-[#05111D] rounded-3xl border border-white/10">
+                    <div class="w-16 h-16 mx-auto bg-navy border border-gold/40 rounded-2xl flex items-center justify-center text-gold text-3xl mb-6">
+                        <i class="ph ph-sparkle"></i>
+                    </div>
+                    <h4 class="font-playfair font-bold text-xl mb-2">3. Gentle Care</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Painless procedures executed with extreme precision and patient-first comfort.</p>
+                </div>
+
+                <div class="reveal reveal-delay-3 text-center p-6 bg-[#05111D] rounded-3xl border border-white/10">
+                    <div class="w-16 h-16 mx-auto bg-navy border border-gold/40 rounded-2xl flex items-center justify-center text-gold text-3xl mb-6">
+                        <i class="ph ph-shield-check"></i>
+                    </div>
+                    <h4 class="font-playfair font-bold text-xl mb-2">4. Long-Term Support</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Tailored maintenance and aftercare plans to ensure your results last a lifetime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-20 relative overflow-hidden mx-4 md:mx-auto max-w-7xl rounded-[3rem] my-24 bg-navy">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" alt="Clinic" class="w-full h-full object-cover opacity-20" />
+        </div>
+        <div class="relative z-10 text-center px-6 reveal">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">Ready to Restore Your Smile?</h2>
+            <p class="text-gray-300 mb-10 max-w-2xl mx-auto text-lg font-light">
+                Schedule a personal consultation with Dr. Krupa today and learn how our advanced treatment options can transform your health and confidence.
+            </p>
+            <a href="appointment.html" class="inline-block bg-gold text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gold_hover transition shadow-lg hover:-translate-y-1">
+                Book Consultation Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#05111D] pt-20 pb-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="text-2xl font-playfair font-bold text-white mb-6 block">
+                        Krupa's<span class="text-gold">.</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Premium dental hospital committed to delivering advanced, pain-free, and luxurious dental care to our distinguished patients.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-youtube-logo"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-gold transition">About Hospital</a></li>
+                        <li><a href="appointment.html" class="hover:text-gold transition">Book Appointment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Treatments -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Treatments</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="treatments.html" class="hover:text-gold transition">Dental Implants</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Invisible Aligners</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Smile Makeover</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Root Canal Treatment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Contact & Hours</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="ph ph-map-pin text-gold mt-1 mr-3 text-lg"></i>
+                            <span data-config="contact-address">123 Luxury Avenue, Premium District, City, Country</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ph ph-phone text-gold mr-3 text-lg"></i>
+                            <span data-config="contact-phone">+1 (800) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-clock text-gold mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <span class="block" data-config="hours-weekday">Mon - Sat: 9:00 AM - 8:00 PM</span>
+                                <span class="block" data-config="hours-sunday">Sunday: By Appointment Only</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Krupa's Dental. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Navbar Glass & Scroll Effect
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass', 'shadow-sm');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-3');
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-navy');
+                    
+                    const links = navLinks.querySelectorAll('a');
+                    links.forEach(link => {
+                        if(!link.classList.contains('text-gold')) {
+                            link.classList.remove('text-white');
+                            link.classList.add('text-navy');
+                        }
+                    });
+
+                    mobileBtn.classList.remove('text-white');
+                    mobileBtn.classList.add('text-navy');
+                } else {
+                    navbar.classList.remove('glass', 'shadow-sm');
+                    navbar.classList.add('py-4');
+                    navbar.classList.remove('py-3');
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-navy');
+                    
+                    const links = navLinks.querySelectorAll('a');
+                    links.forEach(link => {
+                        if(!link.classList.contains('text-gold')) {
+                            link.classList.add('text-white');
+                            link.classList.remove('text-navy');
+                        }
+                    });
+
+                    mobileBtn.classList.add('text-white');
+                    mobileBtn.classList.remove('text-navy');
+                }
+            });
+
+            // 2. Scroll Reveal Animations
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 3. Treatment Category Filtering Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const treatmentItems = document.querySelectorAll('.treatment-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    treatmentItems.forEach(item => {
+                        const categories = item.getAttribute('data-category');
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+        });
+    </script>
+    <script src="js/site-config.js"></script>
+    <script src="js/apply-site-config.js"></script>
+</body>
+</html>

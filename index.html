@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krupa's Dental | Luxury Dental Care</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0B1F33',
+                        gold: '#D4AF37',
+                        gold_hover: '#b5952f',
+                        light: '#F8F9FB',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Glassmorphism */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-playfair {
+            font-family: '"Playfair Display"', serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-dark {
+            background: rgba(11, 31, 51, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 100ms; }
+        .reveal-delay-2 { transition-delay: 200ms; }
+        .reveal-delay-3 { transition-delay: 300ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F0F1F5; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b5952f; }
+
+        /* Floating Buttons Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+
+        .hero-bg-photo {
+            filter: brightness(1.2) contrast(1);
+        }
+    </style>
+</head>
+<body class="bg-light antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair font-bold text-white transition-colors duration-300" id="nav-logo">
+                Krupa's<span class="text-gold">.</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-white transition-colors duration-300" id="nav-links">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="about.html" class="hover:text-gold transition">About</a>
+                <a href="treatments.html" class="hover:text-gold transition">Treatments</a>
+                <a href="#faq" class="hover:text-gold transition">FAQ</a>
+            </div>
+
+            <!-- Linked to appointment.html -->
+            <a href="appointment.html" class="hidden md:inline-block bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
+                Book Appointment
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-2xl" id="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image (Simulating Video) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" alt="Luxury Clinic" class="hero-bg-photo w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-navy/50 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/35 via-transparent to-navy/80"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <span class="reveal inline-block py-1 px-3 rounded-full border border-gold/50 text-gold text-xs font-semibold tracking-widest uppercase mb-6 glass-dark">
+                Welcome to Krupa's Dental
+            </span>
+            <h1 class="reveal reveal-delay-1 text-5xl md:text-7xl font-playfair font-bold text-white leading-tight mb-6">
+                Creating Confident <br/> <span class="text-gold italic">Smiles for Life</span>
+            </h1>
+            <p class="reveal reveal-delay-2 text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light">
+                Advanced dental care delivered with compassion, precision, and world-class technology in a luxurious environment.
+            </p>
+            <div class="reveal reveal-delay-3 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <!-- Linked to appointment.html -->
+                <a href="appointment.html" class="bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-gold_hover transition w-full sm:w-auto text-center">
+                    Book Appointment
+                </a>
+                <a href="treatments.html" class="glass-dark text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition w-full sm:w-auto text-center border border-white/20">
+                    Explore Treatments
+                </a>
+            </div>
+
+            <div class="reveal reveal-delay-3 mt-16 flex justify-center items-center space-x-8 text-white/80 text-sm">
+                <div class="flex items-center space-x-2">
+                    <div class="flex text-gold text-lg">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <span>4.9 Google Rating</span>
+                </div>
+                <div class="hidden sm:block w-px h-4 bg-white/20"></div>
+                <div class="hidden sm:flex items-center space-x-2">
+                    <i class="ph ph-users text-xl text-gold"></i>
+                    <span>10,000+ Happy Patients</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <i class="ph ph-mouse text-white/50 text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div class="max-w-2xl">
+                    <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Our Expertise</h2>
+                    <!-- Renamed to Our Treatments -->
+                    <h3 class="text-4xl font-playfair font-bold text-navy">Our Treatments</h3>
+                </div>
+                <a href="treatments.html" class="mt-6 md:mt-0 text-navy font-medium flex items-center hover:text-gold transition">
+                    View All Services <i class="ph ph-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="reveal group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='treatments.html'">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dea?w=500&auto=format&fit=crop" alt="Implants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative bg-white">
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Dental Implants</h4>
+                        <p class="text-sm text-gray-500 mb-4">Permanent, natural-looking tooth replacements.</p>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="reveal reveal-delay-1 group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='treatments.html'">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fea5f6109968?w=500&auto=format&fit=crop" alt="Smile Makeover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative bg-white">
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Smile Makeover</h4>
+                        <p class="text-sm text-gray-500 mb-4">Complete cosmetic transformations for confidence.</p>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="reveal reveal-delay-2 group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='treatments.html'">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&auto=format&fit=crop" alt="Invisible Aligners" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative bg-white">
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Invisible Aligners</h4>
+                        <p class="text-sm text-gray-500 mb-4">Straighten teeth discreetly without metal braces.</p>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="reveal reveal-delay-3 group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='treatments.html'">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&auto=format&fit=crop" alt="Veneers" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative bg-white">
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Porcelain Veneers</h4>
+                        <p class="text-sm text-gray-500 mb-4">Ultra-thin shells for a flawless, bright smile.</p>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-navy relative overflow-hidden">
+        <!-- Subtle Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="dental-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" stroke="white" stroke-width="2" fill="none"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#dental-pattern)"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+                <div class="reveal">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-gold mb-2"><span class="counter" data-target="15">0</span>+</div>
+                    <div class="text-white/80 text-sm font-medium uppercase tracking-wider">Years Experience</div>
+                </div>
+                <div class="reveal reveal-delay-1">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-gold mb-2"><span class="counter" data-target="10000">0</span>+</div>
+                    <div class="text-white/80 text-sm font-medium uppercase tracking-wider">Happy Patients</div>
+                </div>
+                <div class="reveal reveal-delay-2">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-gold mb-2"><span class="counter" data-target="5000">0</span>+</div>
+                    <div class="text-white/80 text-sm font-medium uppercase tracking-wider">Smiles Restored</div>
+                </div>
+                <div class="reveal reveal-delay-3">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-gold mb-2"><span class="counter" data-target="98">0</span>%</div>
+                    <div class="text-white/80 text-sm font-medium uppercase tracking-wider">Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Doctor Profile Section -->
+    <section id="doctor" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                
+                <!-- Doctor Image -->
+                <div class="md:w-1/2 reveal w-full">
+                    <div class="relative rounded-[2rem] overflow-hidden aspect-[4/5] mx-auto max-w-md shadow-2xl">
+                        <!-- High quality portrait of a female doctor -->
+                        <img src="./pics/pic1.png" alt="Dr. Dr. Krupavathi" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 border-4 border-gold/30 rounded-[2rem] m-4 pointer-events-none"></div>
+                    </div>
+                </div>
+
+                <!-- Doctor Biography -->
+                <div class="md:w-1/2 reveal reveal-delay-1">
+                    <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Meet The Expert</h2>
+                    <h3 class="text-4xl lg:text-5xl font-playfair font-bold text-navy mb-4">Dr. Krupavathi</h3>
+                    <p class="text-gold font-medium text-lg mb-6">Chief Dental Surgeon & Founder</p>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        With over 15 years of dedicated experience in advanced dentistry, Dr. Krupavathi is passionate about creating confident, healthy smiles. She specializes in full-mouth rehabilitations, cosmetic transformations, and modern implantology.
+                    </p>
+                    
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        Her patient-first approach ensures that every treatment is tailored to your unique individual needs. By integrating the latest pain-free technology with a comforting, luxurious clinic environment, Dr. Krupavathi has established a premier destination for exceptional dental care.
+                    </p>
+                    
+                    <div class="flex items-center space-x-6 md:space-x-10">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-navy text-2xl"> BDS, MDS <br>(Oral Medicine & Radiology)<br></span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider font-medium mt-1">Qualifications</span>
+                        </div>
+                        <div class="w-px h-12 bg-gray-200"></div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-navy text-2xl">15+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider font-medium mt-1">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="py-24 bg-light overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 reveal">
+                    <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Innovation</h2>
+                    <h3 class="text-4xl md:text-5xl font-playfair font-bold text-navy leading-tight mb-6">Equipped with World-Class Technology</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        We believe that precision leads to perfection. Our clinic is integrated with the latest international dental technologies to ensure your diagnosis is accurate, and treatments are minimally invasive, painless, and fast.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-navy font-medium">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
+                                <i class="ph ph-check"></i>
+                            </div>
+                            3D CBCT Scanner for Precision Imaging
+                        </li>
+                        <li class="flex items-center text-navy font-medium">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
+                                <i class="ph ph-check"></i>
+                            </div>
+                            Intraoral Digital Scanners (No messy impressions)
+                        </li>
+                        <li class="flex items-center text-navy font-medium">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
+                                <i class="ph ph-check"></i>
+                            </div>
+                            Laser Dentistry for Painless Procedures
+                        </li>
+                        <li class="flex items-center text-navy font-medium">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
+                                <i class="ph ph-check"></i>
+                            </div>
+                            CAD/CAM Digital Smile Design
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 relative reveal reveal-delay-1">
+                    <div class="absolute inset-0 bg-gold rounded-3xl translate-x-4 translate-y-4 opacity-20"></div>
+                    <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&auto=format&fit=crop" alt="Dental Technology" class="relative rounded-3xl z-10 w-full h-[500px] object-cover shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Have Questions?</h2>
+                <h3 class="text-4xl font-playfair font-bold text-navy">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="reveal border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-gold transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-navy text-lg">Are dental implants painful?</span>
+                        <i class="ph ph-caret-down text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-gray-500">
+                        With modern anesthesia and advanced surgical techniques, dental implant placement is usually pain-free. Most patients report less discomfort than a tooth extraction, and we offer sedation options for complete relaxation.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="reveal reveal-delay-1 border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-gold transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-navy text-lg">How long does a Smile Makeover take?</span>
+                        <i class="ph ph-caret-down text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-gray-500">
+                        The timeline varies depending on the specific procedures involved. A simple whitening takes an hour, while veneers might take 2-3 visits over a couple of weeks. We provide a customized timeline during your initial consultation.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="reveal reveal-delay-2 border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-gold transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-navy text-lg">Do you accept dental insurance?</span>
+                        <i class="ph ph-caret-down text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-gray-500">
+                        Yes, we work with most major insurance providers and offer flexible EMI options to ensure premium dental care is accessible. Our team will help you maximize your benefits.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 relative overflow-hidden mx-4 md:mx-auto max-w-7xl rounded-[3rem] mb-24 bg-navy" id="contact">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" alt="Clinic interior" class="w-full h-full object-cover opacity-20" />
+        </div>
+        <div class="relative z-10 text-center px-6 reveal">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">Ready for Your Best Smile?</h2>
+            <p class="text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                Experience world-class dental care in a luxurious, relaxing environment. Schedule your consultation today and take the first step towards a healthier, more beautiful smile.
+            </p>
+            <!-- Linked to appointment.html -->
+            <a href="appointment.html" class="inline-block bg-gold text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gold_hover transition shadow-lg hover:-translate-y-1">
+                Book Your Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#05111D] pt-20 pb-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="text-2xl font-playfair font-bold text-white mb-6 block">
+                        Krupa's<span class="text-gold">.</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Premium dental hospital committed to delivering advanced, pain-free, and luxurious dental care to our distinguished patients.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-youtube-logo"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links (Gallery & Doctors removed) -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-gold transition">About Hospital</a></li>
+                        <li><a href="appointment.html" class="hover:text-gold transition">Book Appointment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Treatments -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Treatments</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="treatments.html" class="hover:text-gold transition">Dental Implants</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Invisible Aligners</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Smile Makeover</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Root Canal Treatment</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Kids Dentistry</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Contact & Hours</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="ph ph-map-pin text-gold mt-1 mr-3 text-lg"></i>
+                            <span data-config="contact-address">123 Luxury Avenue, Premium District, City, Country</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ph ph-phone text-gold mr-3 text-lg"></i>
+                            <span data-config="contact-phone">+1 (800) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-clock text-gold mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <span class="block" data-config="hours-weekday">Mon - Sat: 9:00 AM - 8:00 PM</span>
+                                <span class="block" data-config="hours-sunday">Sunday: By Appointment Only</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Krupa's Dental. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/1234567890" data-config-href="whatsapp" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl hover:scale-110 transition-transform z-50 animate-float">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+    <a href="tel:+18001234567" data-config-href="tel" class="fixed bottom-24 right-6 w-14 h-14 bg-navy border-2 border-gold rounded-full flex items-center justify-center text-gold text-2xl shadow-2xl hover:scale-110 transition-transform z-50">
+        <i class="ph-fill ph-phone-call"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass', 'shadow-sm');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-3');
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-navy');
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-navy');
+                    mobileBtn.classList.remove('text-white');
+                    mobileBtn.classList.add('text-navy');
+                } else {
+                    navbar.classList.remove('glass', 'shadow-sm');
+                    navbar.classList.add('py-4');
+                    navbar.classList.remove('py-3');
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-navy');
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-navy');
+                    mobileBtn.classList.add('text-white');
+                    mobileBtn.classList.remove('text-navy');
+                }
+            });
+
+            // Scroll Reveal Animation (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                        
+                        // If it's a stats section trigger counters
+                        const counters = entry.target.querySelectorAll('.counter');
+                        if (counters.length > 0) {
+                            runCounters(counters);
+                        }
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Number Counters
+            function runCounters(counters) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // ms
+                    const increment = target / (duration / 16); // 60fps
+                    
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                });
+            }
+
+            // FAQ Accordion
+            const faqBtns = document.querySelectorAll('.faq-btn');
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('i');
+                    
+                    // Close others
+                    faqBtns.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.nextElementSibling.classList.add('hidden');
+                            otherBtn.querySelector('i').style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    // Toggle current
+                    content.classList.toggle('hidden');
+                    if (content.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script src="js/site-config.js"></script>
+    <script src="js/apply-site-config.js"></script>
+</body>
+</html>

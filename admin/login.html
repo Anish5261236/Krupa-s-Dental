@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login | Krupa's Dental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: { navy: '#0B1F33', gold: '#D4AF37', gold_hover: '#b5952f', light: '#F8F9FB' },
+      fontFamily: { playfair: ['"Playfair Display"', 'serif'], inter: ['Inter', 'sans-serif'] } } }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  h1, .font-playfair { font-family: '"Playfair Display"', serif; }
+</style>
+</head>
+<body class="bg-navy min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-sm bg-white rounded-3xl shadow-2xl p-10">
+    <div class="text-center mb-8">
+      <a href="../index.html" class="text-2xl font-playfair font-bold text-navy">Krupa's<span class="text-gold">.</span></a>
+      <p class="text-gray-400 text-sm mt-2">Admin Dashboard</p>
+    </div>
+
+    <form id="login-form" class="space-y-5">
+      <div class="space-y-2">
+        <label class="text-sm font-medium text-navy">Username</label>
+        <input type="text" id="username" required autocomplete="username" class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold">
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm font-medium text-navy">Password</label>
+        <input type="password" id="password" required autocomplete="current-password" class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold">
+      </div>
+
+      <div id="error" class="hidden bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3"></div>
+
+      <button type="submit" id="submit-btn" class="w-full bg-gold text-white px-6 py-3 rounded-xl font-medium hover:bg-navy transition-colors">
+        Sign In
+      </button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const errorBox = document.getElementById('error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing in...';
+
+      try {
+        const res = await fetch('/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+          }),
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          errorBox.textContent = data.error || 'Login failed.';
+          errorBox.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Sign In';
+          return;
+        }
+
+        window.location.href = '/admin/dashboard.html';
+      } catch (err) {
+        errorBox.textContent = 'Could not reach the server.';
+        errorBox.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Krupa's Dental</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0B1F33',
+                        gold: '#D4AF37',
+                        gold_hover: '#b5952f',
+                        light: '#F8F9FB',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-playfair {
+            font-family: '"Playfair Display"', serif;
+        }
+
+        /* Navbar Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 150ms; }
+        
+        /* Premium Input Styling */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
+        
+        /* Success Animation */
+        #success-message {
+            display: none;
+        }
+        #success-message.show {
+            display: flex;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-light antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair font-bold text-navy transition-colors duration-300">
+                Krupa's<span class="text-gold">.</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-navy transition-colors duration-300">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="about.html" class="hover:text-gold transition">About</a>
+                <a href="treatments.html" class="hover:text-gold transition">Treatments</a>
+                <a href="index.html#faq" class="hover:text-gold transition">FAQ</a>
+            </div>
+
+            <a href="appointment.html" class="hidden md:inline-block bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
+                Book Appointment
+            </a>
+
+            <button class="md:hidden text-navy text-2xl">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-32 pb-12 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center reveal">
+            <div class="flex items-center justify-center space-x-2 text-gold text-sm font-medium mb-4 uppercase tracking-widest">
+                <a href="index.html" class="hover:text-navy transition">Home</a>
+                <span>/</span>
+                <span class="text-navy">Appointment</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-playfair font-bold text-navy mb-4">Request a Consultation</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto">Take the first step towards your perfect smile. Fill out the form below, and our concierges will contact you to confirm your appointment.</p>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-16 bg-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row bg-white rounded-[2.5rem] shadow-xl overflow-hidden reveal reveal-delay-1">
+                
+                <!-- Left Info Panel -->
+                <div class="lg:w-2/5 bg-navy text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -top-32 -left-32 w-64 h-64 bg-gold rounded-full mix-blend-multiply filter blur-[80px] opacity-30"></div>
+                    <div class="absolute -bottom-32 -right-32 w-64 h-64 bg-gold rounded-full mix-blend-multiply filter blur-[80px] opacity-30"></div>
+                    
+                    <div class="relative z-10 mb-12">
+                        <h3 class="text-3xl font-playfair font-bold mb-4">Premium Care Awaits</h3>
+                        <p class="text-gray-300 font-light leading-relaxed">Experience dentistry redefined. From the moment you arrive, your comfort and care are our highest priorities.</p>
+                    </div>
+
+                    <div class="relative z-10 space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gold shrink-0">
+                                <i class="ph ph-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm text-gray-400 font-medium mb-1">Direct Line</h4>
+                                <p class="text-lg font-medium" data-config="contact-phone">+1 (800) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gold shrink-0">
+                                <i class="ph ph-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm text-gray-400 font-medium mb-1">Email Support</h4>
+                                <p class="text-lg font-medium" data-config="contact-email">concierge@krupasdental.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gold shrink-0">
+                                <i class="ph ph-map-pin text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm text-gray-400 font-medium mb-1">Location</h4>
+                                <p class="text-base font-light text-gray-200" data-config="contact-address-short">123 Luxury Avenue,<br>Premium District, City</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form Panel -->
+                <div class="lg:w-3/5 p-10 md:p-14 relative">
+                    <!-- Success Message Overlay -->
+                    <div id="success-message" class="absolute inset-0 bg-white z-20 flex-col items-center justify-center text-center p-10 rounded-r-[2.5rem]">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-6">
+                            <i class="ph-fill ph-check-circle text-5xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-playfair font-bold text-navy mb-3">Request Received</h3>
+                        <p class="text-gray-500 mb-8 max-w-md mx-auto">Thank you for choosing Krupa's Dental. Our concierge team will contact you shortly to confirm your preferred time slot.</p>
+                        <button onclick="window.location.reload()" class="bg-navy text-white px-8 py-3 rounded-full font-medium hover:bg-gold transition">Book Another</button>
+                    </div>
+
+                    <form id="booking-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Full Name -->
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-navy">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="name-input" required placeholder="John Doe" class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors">
+                            </div>
+                            <!-- Phone -->
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-navy">Phone Number <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone-input" required placeholder="+1 (555) 000-0000" class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-navy">Email Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="email-input" required placeholder="john@example.com" class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Treatment Type -->
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-navy">Treatment Interest</label>
+                                <select id="treatment-input" class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230B1F33%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_1rem_center] bg-[length:0.7rem]">
+                                    <option value="" disabled selected>Select a treatment</option>
+                                    <option>General Checkup</option>
+                                    <option>Smile Makeover</option>
+                                    <option>Dental Implants</option>
+                                    <option>Invisible Aligners</option>
+                                    <option>Teeth Whitening</option>
+                                    <option>Not Sure / Other</option>
+                                </select>
+                            </div>
+                            <!-- Date & Time -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-navy">Preferred Date <span class="text-red-500">*</span></label>
+                                    <input type="date" id="date-input" required class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-navy">Time Slot <span class="text-red-500">*</span></label>
+                                    <select id="time-input" required disabled class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230B1F33%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_1rem_center] bg-[length:0.7rem]">
+                                        <option value="" selected>Select a date first</option>
+                                    </select>
+                                    <p id="slot-hint" class="text-xs text-gray-400"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-navy">Additional Notes or Concerns</label>
+                            <textarea id="notes-input" rows="3" placeholder="Tell us about any specific pain, goals, or anxiety you might have..." class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"></textarea>
+                        </div>
+
+                        <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3 items-center">
+                            <i class="ph ph-warning-circle text-lg mr-2"></i>
+                            <span id="form-error-text"></span>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-gold text-white px-8 py-4 rounded-xl font-medium hover:bg-navy transition-colors duration-300 shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] flex justify-center items-center disabled:opacity-60 disabled:cursor-not-allowed">
+                            <span id="submit-btn-text">Confirm Booking Request</span> <i class="ph ph-arrow-right ml-2 text-xl"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#05111D] pt-20 pb-10 border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="text-2xl font-playfair font-bold text-white mb-6 block">
+                        Krupa's<span class="text-gold">.</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Premium dental hospital committed to delivering advanced, pain-free, and luxurious dental care to our distinguished patients.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gold transition-colors"><i class="ph ph-youtube-logo"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-gold transition">About Hospital</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Treatments</a></li>
+                        <li><a href="appointment.html" class="hover:text-gold transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Treatments -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Treatments</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="treatments.html" class="hover:text-gold transition">Dental Implants</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Invisible Aligners</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Smile Makeover</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Root Canal Treatment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-playfair font-bold text-lg mb-6">Contact & Hours</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="ph ph-map-pin text-gold mt-1 mr-3 text-lg"></i>
+                            <span data-config="contact-address">123 Luxury Avenue, Premium District, City, Country</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ph ph-phone text-gold mr-3 text-lg"></i>
+                            <span data-config="contact-phone">+1 (800) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph ph-clock text-gold mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <span class="block" data-config="hours-weekday">Mon - Sat: 9:00 AM - 8:00 PM</span>
+                                <span class="block" data-config="hours-sunday">Sunday: By Appointment Only</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Krupa's Dental. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Reveal Animations
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // ---- Live appointment booking (talks to the Express/SQLite backend) ----
+            const form = document.getElementById('booking-form');
+            const successMsg = document.getElementById('success-message');
+            const dateInput = document.getElementById('date-input');
+            const timeInput = document.getElementById('time-input');
+            const slotHint = document.getElementById('slot-hint');
+            const errorBox = document.getElementById('form-error');
+            const errorText = document.getElementById('form-error-text');
+            const submitBtn = document.getElementById('submit-btn');
+            const submitBtnText = document.getElementById('submit-btn-text');
+
+            // Don't let people pick a date in the past
+            dateInput.min = new Date().toISOString().split('T')[0];
+
+            function showError(msg) {
+                errorText.textContent = msg;
+                errorBox.classList.remove('hidden');
+                errorBox.classList.add('flex');
+            }
+            function hideError() {
+                errorBox.classList.add('hidden');
+                errorBox.classList.remove('flex');
+            }
+
+            // When the date changes, ask the server which 30-min slots are free
+            dateInput.addEventListener('change', async () => {
+                hideError();
+                timeInput.innerHTML = '<option value="">Loading available times...</option>';
+                timeInput.disabled = true;
+                slotHint.textContent = '';
+
+                if (!dateInput.value) return;
+
+                try {
+                    const res = await fetch(`/api/appointments/slots?date=${dateInput.value}`);
+                    const data = await res.json();
+
+                    if (!res.ok) {
+                        timeInput.innerHTML = '<option value="">Select a date first</option>';
+                        showError(data.error || 'Could not load time slots.');
+                        return;
+                    }
+
+                    if (!data.bookable) {
+                        timeInput.innerHTML = '<option value="">Not available online</option>';
+                        slotHint.textContent = data.message || 'This date is not bookable online.';
+                        return;
+                    }
+
+                    const options = data.slots.map(s =>
+                        `<option value="${s.time}" ${!s.available ? 'disabled' : ''}>${s.label}${!s.available ? ' — Booked' : ''}</option>`
+                    ).join('');
+
+                    timeInput.innerHTML = '<option value="" disabled selected>Select a time</option>' + options;
+                    timeInput.disabled = false;
+
+                    const openCount = data.slots.filter(s => s.available).length;
+                    slotHint.textContent = openCount > 0
+                        ? `${openCount} time slot${openCount === 1 ? '' : 's'} available that day.`
+                        : 'All slots are booked for this date — please try another day.';
+                } catch (err) {
+                    timeInput.innerHTML = '<option value="">Select a date first</option>';
+                    showError('Could not reach the server. Please try again.');
+                }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                hideError();
+
+                const payload = {
+                    name: document.getElementById('name-input').value,
+                    phone: document.getElementById('phone-input').value,
+                    email: document.getElementById('email-input').value,
+                    treatment: document.getElementById('treatment-input').value,
+                    date: dateInput.value,
+                    time: timeInput.value,
+                    notes: document.getElementById('notes-input').value,
+                };
+
+                if (!payload.date || !payload.time) {
+                    showError('Please select a date and an available time slot.');
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtnText.textContent = 'Booking...';
+
+                try {
+                    const res = await fetch('/api/appointments', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+                    const data = await res.json();
+
+                    if (!res.ok) {
+                        // 409 = someone else grabbed this slot first — refresh the slot list
+                        showError(data.error || 'Something went wrong. Please try again.');
+                        dateInput.dispatchEvent(new Event('change'));
+                        return;
+                    }
+
+                    successMsg.classList.add('show');
+                } catch (err) {
+                    showError('Could not reach the server. Please check your connection and try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtnText.textContent = 'Confirm Booking Request';
+                }
+            });
+        });
+    </script>
+    <script src="js/site-config.js"></script>
+    <script src="js/apply-site-config.js"></script>
+</body>
+</html>
